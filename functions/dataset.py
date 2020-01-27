@@ -1,6 +1,5 @@
 import numpy as np
 from skimage.io import imread
-import keras_preprocessing as prep
 import os
 
 def load_image_data(dataset_dir, flatten=False):
@@ -9,6 +8,9 @@ def load_image_data(dataset_dir, flatten=False):
     @params:
         dataset_dir - Required  : path to dataset (Str)
         flatten     - Optional  : flatten image into 1-D array for fully connected network (Bool)
+    @returns:
+        images      - numpy array with all images instances
+        labels      - numpy array with all labels instances
     """
     images = []
     labels = []
@@ -16,10 +18,9 @@ def load_image_data(dataset_dir, flatten=False):
         folder_path = dataset_dir + str(folder)
         for image in os.listdir(folder_path):
             current_image =  imread(folder_path + "/" + image)
-            current_image_arr = prep.image.img_to_array(current_image)
             if flatten:
-                current_image_arr = current_image_arr.flatten()
-            images.append(current_image_arr)
+                current_image = current_image.flatten()
+            images.append(current_image)
             labels.append(folder)
     pointers = np.arange(len(labels))
     np.random.shuffle(pointers)
