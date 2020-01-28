@@ -1,5 +1,5 @@
 import numpy as np
-import cv2 as cv
+import skimage.io as im
 import os
 import shutil
 import sys
@@ -76,6 +76,7 @@ for image_number in range(number_of_items_images):
         for row in range(number_of_rows):
             image[column][row] = ~raw_images_data[pointer_data_images]
             pointer_data_images += 1
-    cv.imwrite(datset_images_location + "/" + str(raw_labels_data[pointer_data_labels]) + "/" + str(image_number)+".png", image)
+    #cv.imwrite(datset_images_location + "/" + str(raw_labels_data[pointer_data_labels]) + "/" + str(image_number)+".png", image)
+    im.imsave(datset_images_location + "/" + str(raw_labels_data[pointer_data_labels]) + "/" + str(image_number)+".png", image)
     pointer_data_labels += 1
     print_progress(image_number, number_of_items_images, prefix="Labeling images: ", suffix="complete", bar_length=100)
