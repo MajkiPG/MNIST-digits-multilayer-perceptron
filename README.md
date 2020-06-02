@@ -1,6 +1,6 @@
 # MNIST-digits-multilayer-perceptron
 
-Implementation of various neural networks for digits classification.
+Implementation of neural network from scratch for digits classification.
 
 Main goal is to train neural networks with different architectures/parameters and compare results.
 
